@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+    port_scanner:
+        image: cpp_port_scanner
+        container_name: port_scanner
+        build: .
+        volumes:
+            - ./:/opt/app:rw
