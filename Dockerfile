@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     wget \
     git \
-    gcc \
-    clang \
+
+    # GNU c++ compiler
     g++ \
     libegl1-mesa \ 
     libgl1-mesa-dev \
@@ -17,13 +17,10 @@ RUN apt-get update && apt-get install -y \
     libglu1-mesa-dev \
     libsfml-dev \
     libgtest-dev \
-    binutils-dev \
-    libtool \
-    lua5.2 \
-    liblua5.2-dev \
-    liblua5.2-0 \
-    graphviz \
-    doxygen
+
+    #GNU Binutils as the GNU linker and the GNU assembler
+    binutils-dev \ 
+    libtool 
 
 RUN wget http://www.cmake.org/files/v3.6/cmake-3.6.2.tar.gz
 
