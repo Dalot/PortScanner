@@ -1,22 +1,26 @@
 #include <iostream>
-#include <SFML/Network.hpp>
-#include <string>
+#include "PortScanner/PortScanner.hpp"
 
-bool port_is_open(const std::string& address, int port)
+int main()
 {
-    sf::TcpSocket socket;
-    bool open = (socket.connect(sf::IpAddress(address), port) == sf::Socket::Done);
-    socket.disconnect();
-    return open;
-}
+    PortScanner* portscanner = new PortScanner();
+    std::string address;
+    std::string port_list;
+    std::vector<int> ports;
+    std::cout << "Address: " << std::flush;
+    std::getline(std::cin, address);
+    std::cout << "Port: " << std::flush;
+    std::getline(std::cin, port_list);
 
-int main(int argc, char const *argv[])
-{
-    std::cout << "Port 80 : ";
-    if (port_is_open("localhost", 80))
-        std::cout << "OPEN" << std::endl;
-    else
-        std::cout << "CLOSED" << std::endl;
+    ports = portscanner->parse_ports_list(port_list);
+    std::cout << "Scanning " << address << "...\n";
+    for (int port : ports) {
+        std::cout << "Port " << port << " : ";
+        if (portscanner->port_is_open(address, port))
+            std::cout << "OPEN\n";
+        else
+            std::cout << "CLOSED\n";
+    }
+    std::cout << std::flush;
     return 0;
 }
-
