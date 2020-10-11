@@ -32,7 +32,7 @@ TESTS_DIR = /opt/app/tests
 CPPFLAGS += -I$(FUSED_GTEST_DIR) -DGTEST_HAS_PTHREAD=0
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g
+CXXFLAGS += -g -std=c++17
 
 all : sample1_unittest
 

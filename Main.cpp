@@ -3,7 +3,7 @@
 
 int main()
 {
-    PortScanner* portscanner = new PortScanner();
+    PortScanner *portscanner = new PortScanner();
     std::string address;
     std::string port_list;
     std::vector<int> ports;
@@ -14,7 +14,8 @@ int main()
 
     ports = portscanner->parse_ports_list(port_list);
     std::cout << "Scanning " << address << "...\n";
-    for (int port : ports) {
+    for (int port : ports)
+    {
         std::cout << "Port " << port << " : ";
         if (portscanner->port_is_open(address, port))
             std::cout << "OPEN\n";
