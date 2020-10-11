@@ -17,16 +17,17 @@ RUN apt-get update && apt-get install -y \
     libglu1-mesa-dev \
     libsfml-dev \
     libgtest-dev \
-
     #GNU Binutils as the GNU linker and the GNU assembler
     binutils-dev \ 
-    libtool 
+    libtool \
+    #openSSL is needed for CMAKE
+    libssl-dev
 
-RUN wget http://www.cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+RUN wget http://www.cmake.org/files/v3.18/cmake-3.18.0.tar.gz
 
-RUN tar -xvf cmake-3.6.2.tar.gz
+RUN tar -xvf cmake-3.18.0.tar.gz
 
-RUN cd cmake-3.6.2 && \
+RUN cd cmake-3.18.0 && \
     ./bootstrap && \
     make && \
     make install
